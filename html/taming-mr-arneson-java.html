@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.16 in css mode. -->
+<html>
+  <head>
+    <title>GetEnv.java</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #87cefa;
+        background-color: #000000;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #ff0000;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #ffffff;
+      }
+      .jde-java-font-lock-doc-tag {
+        /* jde-java-font-lock-doc-tag-face */
+        color: #008b00;
+      }
+      .jde-java-font-lock-modifier {
+        /* jde-java-font-lock-modifier-face */
+        color: #da70d6;
+      }
+      .jde-java-font-lock-package {
+        /* jde-java-font-lock-package-face */
+        color: #0000cd;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #00ff00;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #40e0d0;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #4682b4;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #ee00ee;
+      }
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="keyword">import</span> <span class="jde-java-font-lock-package">java</span>.<span class="jde-java-font-lock-package">util</span>.<span class="type">Map</span>;
+<span class="keyword">import</span> <span class="jde-java-font-lock-package">java</span>.<span class="jde-java-font-lock-package">util</span>.<span class="type">TreeSet</span>;
+
+<span class="jde-java-font-lock-modifier">public</span> <span class="keyword">class</span> <span class="type">GetEnv</span> {
+  <span class="comment">/**
+   * let's test generics
+   * </span><span class="jde-java-font-lock-doc-tag">@param</span><span class="comment"> </span><span class="comment"><span class="variable-name">args</span></span><span class="comment"> the command line arguments
+   */</span>
+  <span class="jde-java-font-lock-modifier">public</span> <span class="jde-java-font-lock-modifier">static</span> <span class="type">void</span> <span class="function-name">main</span>(<span class="type">String</span>[] <span class="variable-name">args</span>) {
+    <span class="comment">// get a map of environment variables
+</span>    <span class="type">Map</span>&lt;<span class="type">String</span>, <span class="type">String</span>&gt; env = System.getenv();
+    <span class="comment">// build a sorted set out of the keys and iterate
+</span>    <span class="keyword">for</span>(<span class="type">String</span> <span class="variable-name">k</span>: <span class="keyword">new</span> <span class="type">TreeSet</span>&lt;<span class="type">String</span>&gt;(env.keySet())) {
+      System.out.printf(<span class="string">"%s = %s\n"</span>, k, env.get(k));
+    }
+  }    
+}
+</pre>
+  </body>
+</html>

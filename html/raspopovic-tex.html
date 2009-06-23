@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.16 in css mode. -->
+<html>
+  <head>
+    <title>test.tex</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #ffff00;
+        background-color: #00008b;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #90ee90;
+        background-color: #00008b;
+      }
+      .constant {
+      }
+      .font-latex-math {
+      }
+      .font-latex-sedate {
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #cd5c5c;
+        background-color: #00008b;
+        font-weight: bold;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #87ceeb;
+        background-color: #00008b;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #ffa500;
+        background-color: #00008b;
+      }
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">% Time-stamp: &lt;2004/04/06, 16:46:43 (EST), maverick, test.tex&gt;
+</span><span class="font-latex-sedate"><span class="keyword">\subsection</span></span><span class="type">{Strict diagonal-dominance}</span>
+Suppose we are given a matrix <span class="font-latex-math">$A=L+D$</span>, where <span class="font-latex-math">$L$</span> is a Laplacian and
+<span class="font-latex-math">$D$</span> is a nonnegative diagonal matrix, for which we seek to construct a
+preconditioner.
+ 
+We may construct a Support Tree Preconditioner, <span class="font-latex-math">$B =
+</span><span class="font-latex-sedate"><span class="keyword"><span class="font-latex-math">\begin</span></span></span><span class="function-name"><span class="font-latex-math">{pmatrix}</span></span><span class="font-latex-math"> T &amp; U\</span><span class="font-latex-sedate"><span class="font-latex-math">\U</span></span><span class="font-latex-sedate"><span class="font-latex-math">\TT</span></span><span class="font-latex-math"> &amp; W</span><span class="font-latex-sedate"><span class="keyword"><span class="font-latex-math">\end</span></span></span><span class="function-name"><span class="font-latex-math">{pmatrix}</span></span><span class="font-latex-math">$</span> for <span class="font-latex-math">$L$</span> and to use <span class="font-latex-math">$B'
+=</span><span class="font-latex-sedate"><span class="keyword"><span class="font-latex-math">\begin</span></span></span><span class="function-name"><span class="font-latex-math">{pmatrix}</span></span><span class="font-latex-math"> T &amp; U \</span><span class="font-latex-sedate"><span class="font-latex-math">\U</span></span><span class="font-latex-sedate"><span class="font-latex-math">\TT</span></span><span class="font-latex-math"> &amp; W+D</span><span class="font-latex-sedate"><span class="keyword"><span class="font-latex-math">\end</span></span></span><span class="function-name"><span class="font-latex-math">{pmatrix}</span></span><span class="font-latex-math">$</span> as a preconditioner
+for <span class="font-latex-math">$A$</span>.  If we let <span class="font-latex-math">$Q = W - U</span><span class="font-latex-sedate"><span class="font-latex-math">\TT</span></span><span class="font-latex-math"> T</span><span class="font-latex-sedate"><span class="font-latex-math">\IV</span></span><span class="font-latex-math"> U$</span>, by Lemma~<span class="font-latex-sedate"><span class="keyword">\ref</span></span><span class="constant">{lem:stcg}</span> it
+suffices to bound <span class="font-latex-math">$</span><span class="font-latex-sedate"><span class="font-latex-math">\sigma</span></span><span class="font-latex-math">(A/Q+D)$</span> and <span class="font-latex-math">$</span><span class="font-latex-sedate"><span class="font-latex-math">\sigma</span></span><span class="font-latex-math">(Q+D/A)$</span>.
+
+<span class="font-latex-sedate"><span class="keyword">\begin</span></span><span class="function-name">{proposition}</span><span class="font-latex-sedate"><span class="keyword">\label</span></span><span class="constant">{prop:XZ-YZ}</span>
+If <span class="font-latex-math">$X$</span>, <span class="font-latex-math">$Y$</span>, and <span class="font-latex-math">$Z$</span> are spsd matrices of the same size then 
+<span class="font-latex-math">$</span><span class="font-latex-sedate"><span class="font-latex-math">\sigma</span></span><span class="font-latex-math">(X+Z/Y+Z) </span><span class="font-latex-sedate"><span class="font-latex-math">\leq</span></span><span class="font-latex-math"> </span><span class="font-latex-sedate"><span class="font-latex-math">\max</span></span><span class="font-latex-math">\{</span><span class="font-latex-sedate"><span class="font-latex-math">\sigma</span></span><span class="font-latex-math">(X/Y),\, 1\}$</span>.
+<span class="font-latex-sedate"><span class="keyword">\end</span></span><span class="function-name">{proposition}</span>
+
+<span class="font-latex-sedate">\Proof</span> We have <span class="font-latex-math">$</span><span class="font-latex-sedate"><span class="font-latex-math">\sigma</span></span><span class="font-latex-math">(X+Z/Y+Z) = 
+</span><span class="font-latex-sedate"><span class="font-latex-math">\min</span></span><span class="font-latex-math">\{</span><span class="font-latex-sedate"><span class="font-latex-math">\tau</span></span><span class="font-latex-math"> </span><span class="font-latex-sedate"><span class="font-latex-math">\mid</span></span><span class="font-latex-math"> </span><span class="font-latex-sedate"><span class="font-latex-math">\forall</span></span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x},\, </span><span class="font-latex-sedate"><span class="font-latex-math">\tau</span></span><span class="font-latex-sedate"><span class="font-latex-math">\cdot</span></span><span class="font-latex-math"> </span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x}</span><span class="font-latex-sedate"><span class="font-latex-math">\TT</span></span><span class="font-latex-math"> (Y+Z)</span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x} </span><span class="font-latex-sedate"><span class="font-latex-math">\geq</span></span><span class="font-latex-math">
+       </span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x}</span><span class="font-latex-sedate"><span class="font-latex-math">\TT</span></span><span class="font-latex-math">(X+Z)</span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x}\} = 
+</span><span class="font-latex-sedate"><span class="font-latex-math">\min</span></span><span class="font-latex-math">\{</span><span class="font-latex-sedate"><span class="font-latex-math">\tau</span></span><span class="font-latex-math"> </span><span class="font-latex-sedate"><span class="font-latex-math">\mid</span></span><span class="font-latex-math"> </span><span class="font-latex-sedate"><span class="font-latex-math">\forall</span></span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x},\, (</span><span class="font-latex-sedate"><span class="font-latex-math">\tau</span></span><span class="font-latex-math">-1)</span><span class="font-latex-sedate"><span class="font-latex-math">\cdot</span></span><span class="font-latex-math"> </span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x}</span><span class="font-latex-sedate"><span class="font-latex-math">\TT</span></span><span class="font-latex-math"> Z</span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x} + 
+      </span><span class="font-latex-sedate"><span class="font-latex-math">\tau</span></span><span class="font-latex-math"> </span><span class="font-latex-sedate"><span class="font-latex-math">\cdot</span></span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x}</span><span class="font-latex-sedate"><span class="font-latex-math">\TT</span></span><span class="font-latex-math"> Y</span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x} </span><span class="font-latex-sedate"><span class="font-latex-math">\geq</span></span><span class="font-latex-math"> </span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x}</span><span class="font-latex-sedate"><span class="font-latex-math">\TT</span></span><span class="font-latex-math"> X</span><span class="font-latex-sedate"><span class="font-latex-math">\vv</span></span><span class="font-latex-math">{x}\} </span><span class="font-latex-sedate"><span class="font-latex-math">\leq</span></span><span class="font-latex-math"> 
+</span><span class="font-latex-sedate"><span class="font-latex-math">\max</span></span><span class="font-latex-math">\{1,\,</span><span class="font-latex-sedate"><span class="font-latex-math">\sigma</span></span><span class="font-latex-math">(X/Y)\}$</span>.<span class="font-latex-sedate">\QED</span>
+</pre>
+  </body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.16 in css mode. -->
+<html>
+  <head>
+    <title>hl-line.el</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #000000;
+        background-color: #f5deb3;
+      }
+      .builtin {
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #00868b;
+        background-color: #f5deb3;
+        font-weight: bold;
+      }
+      .constant {
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #00008b;
+        background-color: #f5deb3;
+        font-weight: bold;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #9932cc;
+        background-color: #f5deb3;
+        font-weight: bold;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #b8860b;
+        background-color: #f5deb3;
+        font-weight: bold;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #a52a2a;
+        background-color: #f5deb3;
+        font-weight: bold;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #d2691e;
+        background-color: #f5deb3;
+        font-weight: bold;
+      }
+      .warning {
+        /* font-lock-warning-face */
+        color: #000000;
+        background-color: #f5deb3;
+        font-weight: bold;
+      }
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">;;; hl-line.el --- highlight the current line
+;;; GPL and header stripped for color-theme html album
+;; Copyright (C) 1998, 2000, 2001 Free Software Foundation, Inc.
+;;; Code:
+</span>
+(<span class="keyword">defgroup</span> <span class="type">hl-line</span> nil
+  <span class="string">"Highlight the current line."</span>
+  <span class="builtin">:version</span> <span class="string">"21.1"</span>
+  <span class="builtin">:group</span> 'editing)
+
+(<span class="keyword">defcustom</span> <span class="variable-name">hl-line-face</span> 'highlight
+  <span class="string">"Face with which to highlight the current line."</span>
+  <span class="builtin">:type</span> 'face
+  <span class="builtin">:group</span> 'hl-line)
+
+(<span class="keyword">defvar</span> <span class="variable-name">hl-line-overlay</span> nil)
+
+(<span class="keyword">defun</span> <span class="function-name">hl-line-highlight</span> ()
+  <span class="string">"Active the Hl-Line overlay on the current line in the current window.
+\(Unless it's a minibuffer window.)"</span>
+  (<span class="keyword">when</span> hl-line-mode                    <span class="comment">; Could be made buffer-local.
+</span>    (<span class="keyword">unless</span> (window-minibuffer-p (selected-window)) <span class="comment">; silly in minibuffer
+</span>      (<span class="keyword">unless</span> hl-line-overlay
+        (setq hl-line-overlay (make-overlay 1 1)) <span class="comment">; to be moved
+</span>        (overlay-put hl-line-overlay 'face hl-line-face))
+      (overlay-put hl-line-overlay 'window (selected-window))
+      (move-overlay hl-line-overlay
+                    (line-beginning-position) (1+ (line-end-position))
+                    (current-buffer)))))
+
+(<span class="keyword">defun</span> <span class="function-name">hl-line-unhighlight</span> ()
+  <span class="string">"Deactivate the Hl-Line overlay on the current line in the current window."</span>
+  (<span class="keyword">if</span> hl-line-overlay
+      (delete-overlay hl-line-overlay)))
+
+<span class="comment">;;;###</span><span class="comment"><span class="warning">autoload</span></span><span class="comment">
+</span>(<span class="keyword">define-minor-mode</span> <span class="function-name">hl-line-mode</span>
+  <span class="string">"Minor mode to highlight the line about point in the current window.
+With ARG, turn Hl-Line mode on if ARG is positive, off otherwise.
+Uses functions `</span><span class="string"><span class="constant">hl-line-unhighlight</span></span><span class="string">' and `</span><span class="string"><span class="constant">hl-line-highlight</span></span><span class="string">' on
+`</span><span class="string"><span class="constant">pre-command-hook</span></span><span class="string">' and `</span><span class="string"><span class="constant">post-command-hook</span></span><span class="string">'."</span>
+  nil nil nil
+  (<span class="keyword">if</span> hl-line-mode
+      (<span class="keyword">progn</span>
+        (add-hook 'pre-command-hook #'hl-line-unhighlight)
+        (add-hook 'post-command-hook #'hl-line-highlight))
+    (hl-line-unhighlight)
+    (remove-hook 'pre-command-hook #'hl-line-unhighlight)
+    (remove-hook 'post-command-hook #'hl-line-highlight)))
+
+<span class="comment">;;;###</span><span class="comment"><span class="warning">autoload</span></span><span class="comment">
+</span>(easy-mmode-define-global-mode
+ global-hl-line-mode hl-line-mode hl-line-mode
+ <span class="builtin">:group</span> 'hl-line)
+
+(<span class="keyword">provide</span> '<span class="constant">hl-line</span>)
+
+<span class="comment">;;; hl-line.el ends here
+</span></pre>
+  </body>
+</html>

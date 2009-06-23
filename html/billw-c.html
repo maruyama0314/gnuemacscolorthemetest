@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.16 in css mode. -->
+<html>
+  <head>
+    <title>sms.c</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #fff8dc;
+        background-color: #000000;
+      }
+      .builtin {
+        /* font-lock-builtin-face */
+        color: #b0c4de;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #ffd700;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #00fa9a;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #00ffff;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #ffa500;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #ffff00;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #ffa07a;
+      }
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+#<span class="builtin">define</span> <span class="variable-name">UNICODE</span>
+#<span class="builtin">include</span> <span class="string">&lt;windows.h&gt;</span>
+
+<span class="type">int</span> <span class="function-name">main</span>(<span class="type">int</span> <span class="variable-name">argc</span>, <span class="type">char</span> **<span class="variable-name">argv</span>)
+{
+    <span class="type">int</span> <span class="variable-name">speed1</span> = 0, <span class="variable-name">speed2</span> = 0, <span class="variable-name">speed</span> = 0;
+    printf(<span class="string">"Set Mouse Speed by Maverick\n"</span>);
+    
+    SystemParametersInfo(SPI_GETMOUSESPEED, 0, &amp;speed, 0);
+    printf(<span class="string">"Current speed: %2d\n"</span>, speed);
+    
+    <span class="keyword">if</span> (argc == 1) <span class="keyword">return</span> 0;
+    <span class="keyword">if</span> (argc &gt;= 2) sscanf(argv[1], <span class="string">"%d"</span>, &amp;speed1);
+    <span class="keyword">if</span> (argc &gt;= 3) sscanf(argv[2], <span class="string">"%d"</span>, &amp;speed2);
+    
+    <span class="keyword">if</span> (argc == 2) 
+    { <span class="comment">// set speed to fixed value
+</span>      speed = speed1;
+  } 
+  <span class="keyword">else</span> <span class="keyword">if</span> (argc == 3)
+  { <span class="comment">// alternate between two speed, otherwise speed1 will be used
+</span>    <span class="keyword">if</span> (speed == speed1 || speed == speed2) speed = speed1 + speed2 - speed;
+    <span class="keyword">else</span> speed = speed1;
+  }
+
+  SystemParametersInfo(SPI_SETMOUSESPEED, 0, speed, 0);
+    SystemParametersInfo(SPI_GETMOUSESPEED, 0, &amp;speed, 0);
+    printf(<span class="string">"New speed:     %2d\n"</span>, speed);
+    <span class="keyword">return</span> 0;
+}</pre>
+  </body>
+</html>

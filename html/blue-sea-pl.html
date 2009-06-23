@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.16 in css mode. -->
+<html>
+  <head>
+    <title>csvformat.pl</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #bebebe;
+        background-color: #191970;
+      }
+      .comment {
+        /* font-lock-comment-face */
+        color: #add8e6;
+      }
+      .constant {
+        /* font-lock-constant-face */
+        color: #98fb98;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #afeeee;
+        font-weight: bold;
+      }
+      .string {
+        /* font-lock-string-face */
+        color: #87cefa;
+      }
+      .underline {
+        /* underline */
+        text-decoration: underline;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #40e0d0;
+        font-weight: bold;
+      }
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="comment">#!perl -w
+</span>
+<span class="comment"># Time-stamp: &lt;2002/04/06, 13:12:13 (EST), maverick, csvformat.pl&gt;
+# Two pass CSV file to table formatter
+</span>
+$<span class="variable-name">delim</span> = $#<span class="underline"><span class="variable-name">ARGV</span></span> &gt;= 1 ? $<span class="variable-name">ARGV</span>[1] : <span class="string">','</span>;
+print STDERR <span class="string">"Split pattern: $delim\n"</span>;
+
+<span class="comment"># first pass
+</span>open F, <span class="string">"&lt;$ARGV[0]"</span> or <span class="keyword">die</span>;
+<span class="keyword">while</span>(&lt;<span class="constant">F</span>&gt;)
+{
+  chomp;
+  $<span class="variable-name">i</span> = 0;
+  map { $<span class="variable-name">max</span>[$<span class="variable-name">_</span>-&gt;[1]] = $<span class="variable-name">_</span>-&gt;[0] <span class="keyword">if</span> $<span class="variable-name">_</span>-&gt;[0] &gt; ($<span class="variable-name">max</span>[$<span class="variable-name">_</span>-&gt;[1]] || 0) }
+    (map {[length $<span class="variable-name">_</span>, $<span class="variable-name">i</span>++]} split($<span class="variable-name">delim</span>));
+}
+close F;
+
+print STDERR <span class="string">'Field width:   '</span>, join(<span class="string">', '</span>, @<span class="underline"><span class="variable-name">max</span></span>), <span class="string">"\n"</span>;
+print STDERR join(<span class="string">' '</span>, map {<span class="string">'-'</span> x $<span class="variable-name">_</span>} @<span class="underline"><span class="variable-name">max</span></span>);
+
+<span class="comment"># second pass
+</span>open F, <span class="string">"&lt;$ARGV[0]"</span> or <span class="keyword">die</span>;
+<span class="keyword">while</span>(&lt;<span class="constant">F</span>&gt;)
+  {
+  chomp;
+  $<span class="variable-name">i</span> = 0;
+  map { printf(<span class="string">"%-$max[$_-&gt;[1]]s "</span>, $<span class="variable-name">_</span>-&gt;[0]) }
+    (map {[$<span class="variable-name">_</span>, $<span class="variable-name">i</span>++]} split($<span class="variable-name">delim</span>));
+  print <span class="string">"\n"</span>;
+}
+close F;
+</pre>
+  </body>
+</html>
