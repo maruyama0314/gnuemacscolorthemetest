@@ -42,7 +42,7 @@ print IDX <<HEADER
     </style>
   </head>
   <body>
-    <h1><a href="./index.html">$title</a> - $lang</h1>
+    <h1><a href="http://code.google.com/p/gnuemacscolorthemetest/">$title</a> - $lang</h1>
     <script language="javascript">
       function changeHeight(h) {
         var tds = document.getElementsByTagName("td");
@@ -93,7 +93,7 @@ while(my $line = <D>) {
   my ($cname, $cfunc) = split(':', $line);
 
   # skip color themes that I don't want to show
-  next if $cname eq 'Maverick\'s Cool Color';
+  next if $cfunc eq 'my-color-theme';
 
   print $cname;
   my ($cfuncshort) = $cfunc =~ /^color-theme-(.*)$/;
