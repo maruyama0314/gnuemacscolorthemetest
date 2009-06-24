@@ -15,6 +15,7 @@ print "Processing $numleft themes\n" if($numleft > 0);
 
 my $date = localtime;
 my $htmldir = '../html/';
+my $frontpage = 'http://code.google.com/p/gnuemacscolorthemetest/';
 
 open IDX, '>' . $htmldir . "index-$suffix.html" 
   or die "Cannot open index-$suffix.html";
@@ -42,7 +43,7 @@ print IDX <<HEADER
     </style>
   </head>
   <body>
-    <h1><a href="http://code.google.com/p/gnuemacscolorthemetest/">$title</a> - $lang</h1>
+    <h1><a href="$frontpage">$title</a> - $lang</h1>
     <script language="javascript">
       function changeHeight(h) {
         var tds = document.getElementsByTagName("td");
@@ -51,8 +52,8 @@ print IDX <<HEADER
     </script>
     <ul>
     <li>This page really requires a modern web browser. Click <a
-      href="./index.html">here</a> for more information.</li>
-    <li>Do your friends a favor. Link to the <a href="./index.html">parent page</a>
+      href="$frontpage">here</a> for more information.</li>
+    <li>Do your friends a favor. Link to the <a href="$frontpage">front page</a>
       instead. Thanks!</li>
     <li>Useful tip: decrease the text size to see more in each <tt>iframe</tt>.
       (For example, in Firefox press ctrl-minus and you will see.)</li>
