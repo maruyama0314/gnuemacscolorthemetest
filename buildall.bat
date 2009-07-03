@@ -4,6 +4,8 @@ perl build.pl samples/GetEnv.java "Java" "java"
 perl build.pl samples/test.tex "LaTeX" "tex"
 perl build.pl samples/csvformat.pl "Perl" "pl"
 
+svn ps svn:mime-type text/html ..\html\*.html
+
 dir ..\html\*-c.html | tail -n 3
 dir ..\html\*-el.html | tail -n 3
 dir ..\html\*-java.html | tail -n 3
